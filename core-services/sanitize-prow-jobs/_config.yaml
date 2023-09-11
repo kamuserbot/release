@@ -10073,6 +10073,7 @@ buildFarm:
       - redhat-developer-gitops-operator-master-periodics.yaml
       - redhat-developer-gitops-backend-master-presubmits.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.12-presubmits.yaml
       - redhat-developer-odo-main-periodics.yaml
       - redhat-developer-odo-main-presubmits.yaml
       - redhat-openshift-ecosystem-cvp-ocp-4.14-periodics.yaml
