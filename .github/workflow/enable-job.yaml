@@ -1,0 +1,66 @@
+name: enable openshift-ci on new v* branch
+on:
+  repository_dispatch
+
+jobs:
+  automated-release-config-adder:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name:  pre-git-config
+      env:
+        GITOPS_BRANCH: ${{ github.event.client_payload.branch }}
+      run: |
+        cp .github/workflows/enable-ci-on-new-branch.sh /tmp/enable-ci-on-new-branch.sh
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git remote add upstream https://github.com/openshift/release.git
+        git fetch upstream
+        git checkout -b jobs-$GITOPS_BRANCH upstream/master
+        mkdir -p .github/workflows/
+        cp /tmp/enable-ci-on-new-branch.sh .github/workflows/enable-ci-on-new-branch.sh
+      
+    - name: Add-Config
+      env:
+        CONTAINER_ENGINE: podman 
+        PAYLOAD: ${{ toJson(github.event.client_payload) }} 
+      run: |
+        echo "running for ${{ github.event.client_payload.branch }} !"
+        export GITOPS_BRANCH=${{ github.event.client_payload.branch }} 
+        bash .github/workflows/enable-ci-on-new-branch.sh
+        make update
+        if [[ $? != 0  ]]; then
+          echo "Failed to run 'make jobs'"
+        fi
+        # remove script
+        rm -rf .github/workflows/enable-ci-on-new-branch.sh
+
+    - name: Add configuration to git and create branch
+      id: git
+      env:
+        GITOPS_BRANCH: ${{ github.event.client_payload.branch }} 
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      run: |
+        echo "git operations"
+        # set user 
+        git add core-services/sanitize-prow-jobs/_config.yaml ci-operator/config/redhat-developer/gitops-operator/ ci-operator/jobs/redhat-developer/gitops-operator/
+        git status
+        echo "commiting changes"
+        git commit -m "GITOPS: enabling tests for $GITOPS_BRANCH version" -m "gitops-operator jobs added for branch $GITOPS_BRANCH."
+        echo "pushing changes to jobs-$GITOPS_BRANCH added."
+        git push -f origin jobs-$GITOPS_BRANCH 
+
+       
+    - name: Post to a Slack channel
+      id: slack
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        channel-id: 'C0423RS62JX'
+        payload: "{\"text\": \"click on https://github.com/kamuserbot/release/pull/new/jobs-${{ github.event.client_payload.branch }} to create a PR for jobs-${{ github.event.client_payload.branch }} branch\"}"
+        slack-message: "click on https://github.com/kamuserbot/release/pull/new/jobs-${{ github.event.client_payload.branch }} to create a PR for jobs-${{ github.event.client_payload.branch }} branch"
