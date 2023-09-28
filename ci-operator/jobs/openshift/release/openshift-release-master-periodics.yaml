@@ -31972,7 +31972,7 @@ periodics:
       - --confirm
       command:
       - /ko-app/commenter
-      image: gcr.io/k8s-prow/commenter:v20230901-e9e5d470a5
+      image: gcr.io/k8s-prow/commenter:v20230927-4613add0a1
       imagePullPolicy: Always
       name: ""
       resources:
@@ -44711,6 +44711,13 @@ periodics:
     job-release: "4.12"
     pj-rehearse.openshift.io/can-be-rehearsed: "true"
   name: periodic-ci-openshift-release-master-nightly-4.12-e2e-aws-ovn-upgrade-rollback-oldest-supported
+  reporter_config:
+    slack:
+      channel: '#alerts-ocp-rollback-ci'
+      job_states_to_report:
+      - failure
+      - error
+      report_template: Job {{.Spec.Job}} ended with {{.Status.State}}, see <{{.Status.URL}}|here>
   spec:
     containers:
     - args:
@@ -48539,7 +48546,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   cron: 22 21 */14,28 * *
   decorate: true
   decoration_config:
@@ -48550,7 +48557,7 @@ periodics:
     repo: release
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.12
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -48615,7 +48622,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   cron: 7 5 */12,21 * *
   decorate: true
   decoration_config:
@@ -48626,7 +48633,7 @@ periodics:
     repo: release
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.12
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -48995,7 +49002,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   cron: 48 8 */5,18 * *
   decorate: true
   decoration_config:
@@ -49006,7 +49013,7 @@ periodics:
     repo: release
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.12
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55238,7 +55245,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55249,7 +55256,7 @@ periodics:
   interval: 148h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55314,7 +55321,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55325,7 +55332,7 @@ periodics:
   interval: 160h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55390,7 +55397,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55401,7 +55408,7 @@ periodics:
   interval: 166h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55466,7 +55473,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55477,7 +55484,7 @@ periodics:
   interval: 152h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55542,7 +55549,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55553,7 +55560,7 @@ periodics:
   interval: 146h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55618,7 +55625,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55629,7 +55636,7 @@ periodics:
   interval: 154h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55694,7 +55701,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55705,7 +55712,7 @@ periodics:
   interval: 156h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55770,7 +55777,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55781,7 +55788,7 @@ periodics:
   interval: 158h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -55846,7 +55853,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -55857,7 +55864,7 @@ periodics:
   interval: 144h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -56638,7 +56645,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -56649,7 +56656,7 @@ periodics:
   interval: 49h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.13-upgrade-from-stable-4.12
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -57792,6 +57799,83 @@ periodics:
         secretName: result-aggregator
 - agent: kubernetes
   cluster: build01
+  cron: '@weekly'
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+    timeout: 4h0m0s
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: release
+  labels:
+    ci-operator.openshift.io/cloud: aws
+    ci-operator.openshift.io/cloud-cluster-profile: aws-2
+    ci-operator.openshift.io/variant: nightly-4.14
+    ci.openshift.io/generator: prowgen
+    ci.openshift.io/no-builds: "true"
+    job-release: "4.14"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-release-master-nightly-4.14-e2e-aws-ovn-ha-cert-rotation-suspend-30d
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/e2e-aws-ovn-ha-cert-rotation-suspend-30d-cluster-profile
+      - --target=e2e-aws-ovn-ha-cert-rotation-suspend-30d
+      - --variant=nightly-4.14
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/e2e-aws-ovn-ha-cert-rotation-suspend-30d-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-2
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build01
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -58293,6 +58377,89 @@ periodics:
         name: ci-pull-credentials
         readOnly: true
       - mountPath: /usr/local/e2e-aws-ovn-single-node-workers-cluster-profile
+        name: cluster-profile
+      - mountPath: /secrets/gcs
+        name: gcs-credentials
+        readOnly: true
+      - mountPath: /etc/pull-secret
+        name: pull-secret
+        readOnly: true
+      - mountPath: /etc/report
+        name: result-aggregator
+        readOnly: true
+    serviceAccountName: ci-operator
+    volumes:
+    - name: boskos
+      secret:
+        items:
+        - key: credentials
+          path: credentials
+        secretName: boskos-credentials
+    - name: ci-pull-credentials
+      secret:
+        secretName: ci-pull-credentials
+    - name: cluster-profile
+      secret:
+        secretName: cluster-secrets-aws-2
+    - name: pull-secret
+      secret:
+        secretName: registry-pull-credentials
+    - name: result-aggregator
+      secret:
+        secretName: result-aggregator
+- agent: kubernetes
+  cluster: build01
+  decorate: true
+  decoration_config:
+    skip_cloning: true
+  extra_refs:
+  - base_ref: master
+    org: openshift
+    repo: release
+  interval: 48h
+  labels:
+    ci-operator.openshift.io/cloud: aws
+    ci-operator.openshift.io/cloud-cluster-profile: aws-2
+    ci-operator.openshift.io/variant: nightly-4.14
+    ci.openshift.io/generator: prowgen
+    ci.openshift.io/no-builds: "true"
+    job-release: "4.14"
+    pj-rehearse.openshift.io/can-be-rehearsed: "true"
+  name: periodic-ci-openshift-release-master-nightly-4.14-e2e-aws-ovn-upgrade-rollback-oldest-supported
+  reporter_config:
+    slack:
+      channel: '#alerts-ocp-rollback-ci'
+      job_states_to_report:
+      - failure
+      - error
+      report_template: Job {{.Spec.Job}} ended with {{.Status.State}}, see <{{.Status.URL}}|here>
+  spec:
+    containers:
+    - args:
+      - --gcs-upload-secret=/secrets/gcs/service-account.json
+      - --image-import-pull-secret=/etc/pull-secret/.dockerconfigjson
+      - --lease-server-credentials-file=/etc/boskos/credentials
+      - --report-credentials-file=/etc/report/credentials
+      - --secret-dir=/secrets/ci-pull-credentials
+      - --secret-dir=/usr/local/e2e-aws-ovn-upgrade-rollback-oldest-supported-cluster-profile
+      - --target=e2e-aws-ovn-upgrade-rollback-oldest-supported
+      - --variant=nightly-4.14
+      command:
+      - ci-operator
+      image: ci-operator:latest
+      imagePullPolicy: Always
+      name: ""
+      resources:
+        requests:
+          cpu: 10m
+      volumeMounts:
+      - mountPath: /etc/boskos
+        name: boskos
+        readOnly: true
+      - mountPath: /secrets/ci-pull-credentials
+        name: ci-pull-credentials
+        readOnly: true
+      - mountPath: /usr/local/e2e-aws-ovn-upgrade-rollback-oldest-supported-cluster-profile
         name: cluster-profile
       - mountPath: /secrets/gcs
         name: gcs-credentials
@@ -63773,7 +63940,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -63784,7 +63951,7 @@ periodics:
   interval: 162h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -63849,7 +64016,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   cron: 18 22 * * *
   decorate: true
   decoration_config:
@@ -63860,7 +64027,7 @@ periodics:
     repo: release
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -63932,7 +64099,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -63943,7 +64110,7 @@ periodics:
   interval: 164h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64008,7 +64175,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64019,7 +64186,7 @@ periodics:
   interval: 154h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64084,7 +64251,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64095,7 +64262,7 @@ periodics:
   interval: 148h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64160,7 +64327,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64171,7 +64338,7 @@ periodics:
   interval: 160h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64236,7 +64403,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64247,7 +64414,7 @@ periodics:
   interval: 166h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64312,7 +64479,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64323,7 +64490,7 @@ periodics:
   interval: 158h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64388,7 +64555,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64399,7 +64566,7 @@ periodics:
   interval: 156h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64464,7 +64631,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64475,7 +64642,7 @@ periodics:
   interval: 154h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -64540,7 +64707,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -64551,7 +64718,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -65413,7 +65580,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -65424,7 +65591,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14-upgrade-from-stable-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -65489,7 +65656,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -65500,7 +65667,7 @@ periodics:
   interval: 84h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.14-upgrade-from-stable-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -70891,7 +71058,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -70902,7 +71069,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -70967,7 +71134,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -70978,7 +71145,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71043,7 +71210,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71054,7 +71221,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71119,7 +71286,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71130,7 +71297,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71195,7 +71362,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71206,7 +71373,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71271,7 +71438,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71282,7 +71449,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71347,7 +71514,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71358,7 +71525,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71423,7 +71590,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71434,7 +71601,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71499,7 +71666,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71510,7 +71677,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -71575,7 +71742,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -71586,7 +71753,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -72448,7 +72615,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -72459,7 +72626,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: nightly-4.15-upgrade-from-stable-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -90113,7 +90280,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -90124,7 +90291,7 @@ periodics:
   interval: 167h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -90189,7 +90356,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -90200,7 +90367,7 @@ periodics:
   interval: 165h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -90729,7 +90896,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -90740,7 +90907,7 @@ periodics:
   interval: 169h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -90805,7 +90972,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -90816,7 +90983,7 @@ periodics:
   interval: 171h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -91345,7 +91512,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -91356,7 +91523,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -91421,7 +91588,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -91432,7 +91599,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -92809,7 +92976,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -92820,7 +92987,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-scos-4.13
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -93117,7 +93284,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -93128,7 +93295,7 @@ periodics:
   interval: 48h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-scos-4.14
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -93425,7 +93592,7 @@ periodics:
       secret:
         secretName: result-aggregator
 - agent: kubernetes
-  cluster: vsphere
+  cluster: vsphere02
   decorate: true
   decoration_config:
     skip_cloning: true
@@ -93436,7 +93603,7 @@ periodics:
   interval: 168h
   labels:
     ci-operator.openshift.io/cloud: vsphere
-    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8
+    ci-operator.openshift.io/cloud-cluster-profile: vsphere-8-vpn
     ci-operator.openshift.io/variant: okd-scos-4.15
     ci.openshift.io/generator: prowgen
     ci.openshift.io/no-builds: "true"
@@ -93534,7 +93701,7 @@ periodics:
       - --confirm
       command:
       - /ko-app/commenter
-      image: gcr.io/k8s-prow/commenter:v20230901-e9e5d470a5
+      image: gcr.io/k8s-prow/commenter:v20230927-4613add0a1
       imagePullPolicy: Always
       name: ""
       resources:
@@ -93959,7 +94126,7 @@ periodics:
       - --confirm
       command:
       - /ko-app/commenter
-      image: gcr.io/k8s-prow/commenter:v20230901-e9e5d470a5
+      image: gcr.io/k8s-prow/commenter:v20230927-4613add0a1
       imagePullPolicy: Always
       name: ""
       resources:
@@ -94192,46 +94359,6 @@ periodics:
       secret:
         items:
         - key: sa.config-updater.build05.config
-          path: kubeconfig
-        secretName: config-updater
-- agent: kubernetes
-  cluster: app.ci
-  decorate: true
-  extra_refs:
-  - base_ref: master
-    org: openshift
-    repo: release
-  interval: 12h
-  labels:
-    ci.openshift.io/build-farm: build08
-    ci.openshift.io/generator: cluster-init
-    ci.openshift.io/role: infra
-  name: periodic-openshift-release-master-build08-apply
-  spec:
-    containers:
-    - args:
-      - --config-dir=clusters/build-clusters/build08
-      - --as=
-      - --kubeconfig=/etc/build-farm-credentials/kubeconfig
-      - --confirm=true
-      command:
-      - applyconfig
-      image: applyconfig:latest
-      imagePullPolicy: Always
-      name: ""
-      resources:
-        requests:
-          cpu: 10m
-      volumeMounts:
-      - mountPath: /etc/build-farm-credentials
-        name: build-farm-credentials
-        readOnly: true
-    serviceAccountName: config-updater
-    volumes:
-    - name: build-farm-credentials
-      secret:
-        items:
-        - key: sa.config-updater.build08.config
           path: kubeconfig
         secretName: config-updater
 - agent: kubernetes

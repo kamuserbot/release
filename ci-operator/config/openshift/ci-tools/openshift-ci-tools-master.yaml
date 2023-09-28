@@ -137,8 +137,6 @@ images:
       paths:
       - destination_dir: .
         source_path: /go/bin/ci-operator-prowgen
-      - destination_dir: .
-        source_path: /go/bin/sanitize-prow-jobs
   to: ci-operator-prowgen
 - context_dir: images/sanitize-prow-jobs/
   from: os
@@ -774,6 +772,9 @@ tests:
         namespace: test-credentials
       - mount_path: /tmp/hive
         name: hive-hive-credentials
+        namespace: test-credentials
+      - mount_path: /secrets/manifest-tool
+        name: manifest-tool-local-pusher
         namespace: test-credentials
       from: test-bin
       resources:

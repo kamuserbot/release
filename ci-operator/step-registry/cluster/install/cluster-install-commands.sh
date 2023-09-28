@@ -34,9 +34,23 @@ for cluster_value in $(env | grep -E '^CLUSTER[0-9]+_CONFIG' | sort  --version-s
     fi
 done
 
+if [ $NUM_CLUSTERS -eq 1 ]; then
+  if [[ "$CLUSTERS_CMD" =~ .*"name=".* ]]; then
+    echo "Using provided name"
+  elif [ "${RANDOMIZE_CLUSTER_NAME}" = "true" ]; then
+    subfix=$(openssl rand -hex 2)
+    CLUSTER_NAME="$CLUSTER_NAME_PREFIX-$subfix"
+    CLUSTERS_CMD=${CLUSTERS_CMD/cluster /cluster name=${CLUSTER_NAME};}
+  else
+    echo "Either pass cluster name or set 'RANDOMIZE_CLUSTER_NAME' to 'true'"
+    exit 1
+  fi
+fi
+
+
 RUN_COMMAND+="${CLUSTERS_CMD} "
 
-if [ "${PARALLEL}" = "true" ] && [ $NUM_CLUSTERS -gt 1 ]; then
+if [ "${CLUSTERS_RUN_IN_PARALLEL}" = "true" ] && [ $NUM_CLUSTERS -gt 1 ]; then
     RUN_COMMAND+=" --parallel"
 fi
 
@@ -46,6 +60,10 @@ fi
 
 if [[ -n "${PULL_SECRET_NAME}" ]]; then
     RUN_COMMAND+=" --registry-config-file=/var/run/secrets/ci.openshift.io/cluster-profile/${PULL_SECRET_NAME} --docker-config-file ${DOCKER_CONFIG_JSON_PATH}"
+fi
+
+if [[ -n "${GCP_SERVICE_ACCOUNT_NAME}" ]]; then
+    RUN_COMMAND+=" --gcp-service-account-file=${CLUSTER_PROFILE_DIR}/${GCP_SERVICE_ACCOUNT_NAME} "
 fi
 
 echo "$RUN_COMMAND" | sed -r "s/ocm-token=[A-Za-z0-9\.\-]+/ocm-token=hashed-token /g"
