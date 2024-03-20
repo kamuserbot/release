@@ -5921,6 +5921,7 @@ buildFarm:
       - redhat-developer-service-binding-operator-release-v1.3.x-periodics.yaml
       - redhat-openshift-ecosystem-certified-operators-preprod-ocp-4.8-periodics.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.12.0-presubmits.yaml
       - redhat-openshift-ecosystem-certified-operators-prod-ocp-4.11-periodics.yaml
       - redhat-openshift-ecosystem-certified-operators-prod-ocp-4.10-periodics.yaml
       - redhat-developer-service-binding-operator-release-v1.1.x-presubmits.yaml
