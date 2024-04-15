@@ -14321,6 +14321,7 @@ buildFarm:
       - redhat-openshift-ecosystem-preflight-ocp-4.12-periodics.yaml
       - redhat-openshift-ecosystem-preflight-ocp-4.10-periodics.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.12.1-presubmits.yaml
       - redhat-openshift-ecosystem-cvp-ocp-4.6-periodics.yaml
       - redhat-openshift-ecosystem-preflight-ocp-4.15-periodics.yaml
       - redhat-openshift-ecosystem-preflight-ocp-4.6-periodics.yaml
