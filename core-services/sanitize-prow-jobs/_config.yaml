@@ -6796,6 +6796,7 @@ buildFarm:
       - redhat-openshift-ecosystem-cvp-ocp-4.15-periodics.yaml
       - redhat-developer-service-binding-operator-master-presubmits.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.13-presubmits.yaml
       - redhat-openshift-ecosystem-preflight-ocp-4.10-periodics.yaml
       - redhat-openshift-ecosystem-preflight-ocp-4.11-periodics.yaml
       - redhat-openshift-ecosystem-cvp-ocp-4.9-periodics.yaml
