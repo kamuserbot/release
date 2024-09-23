@@ -6762,6 +6762,7 @@ buildFarm:
       - openshift-priv-cluster-network-operator-release-4.6-presubmits.yaml
       - openshift-knative-eventing-release-next-presubmits.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.14.0-presubmits.yaml
       - openshift-cluster-etcd-operator-release-4.7-presubmits.yaml
       - rhpit-interop-tests-main-periodics.yaml
       - openshift-priv-oc-release-4.14-presubmits.yaml
