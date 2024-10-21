@@ -274,6 +274,7 @@ buildFarm:
       - openshift-cluster-storage-operator-release-4.8-presubmits.yaml
       - openshift-priv-cluster-authentication-operator-master-presubmits.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.12-test-fix-1-presubmits.yaml
       - maistra-maistra-test-tool-main-periodics.yaml
       - openshift-cluster-storage-operator-release-4.9-presubmits.yaml
       - openshift-power-monitoring-power-monitoring-operator-tech-preview-0.2-periodics.yaml
