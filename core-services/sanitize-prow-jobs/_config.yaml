@@ -16513,6 +16513,7 @@ buildFarm:
       - integr8ly-integreatly-operator-mgdapi-3425-gcp-presubmits.yaml
       - openshift-priv-router-release-4.8-presubmits.yaml
       - redhat-developer-gitops-operator-master-presubmits.yaml
+      - redhat-developer-gitops-operator-v1.15.0-presubmits.yaml
       - openshift-cluster-dns-operator-release-4.18-presubmits.yaml
       - openshift-priv-azure-disk-csi-driver-operator-release-4.14-presubmits.yaml
       - openshift-priv-azure-disk-csi-driver-operator-release-4.15-presubmits.yaml
